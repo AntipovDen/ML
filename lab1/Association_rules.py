@@ -1,6 +1,6 @@
 __author__ = 'dantipov'
 
-eps = 5
+eps = 10
 
 def issubset(subset, set):
     i_set = 0
@@ -45,12 +45,9 @@ for t in transactions:
 L = [[i] for i in range(len(item_names)) if count[i] > eps]
 items = [i for i in range(len(item_names)) if count[i] > eps]
 k = 2
-print(len(items))
-print(items)
 
 while len(L) > 0:
     #set of candidates rules
-    print(k)
     C = [(i + [j]) for i in L for j in range(i[-1] + 1, len(item_names)) if j in items and subsets_in_L(i + [j], L)]
 
     count = [0] * len(C)
@@ -60,7 +57,6 @@ while len(L) > 0:
                 if issubset(C[i], transactions[id]):
                     count[i] += 1
 
-    print(count)
     L = [C[i] for i in range(len(C)) if count[i] >= eps]
     count = [c for c in count if c >= eps]
 
@@ -68,6 +64,7 @@ while len(L) > 0:
         result.append((count[i], L[i]))
     k += 1
 
+result.sort()
 for r in result:
-    print(r[0], r[1])
+    print(r[0], [item_names[i] for i in r[1]])
 
