@@ -1,6 +1,6 @@
 __author__ = 'dantipov'
 
-eps = 10
+eps = 5
 
 def issubset(subset, set):
     i_set = 0
@@ -21,7 +21,7 @@ def subsets_in_L(set, L):
 
 f = open("supermarket.arff")
 
-item_names = [i for i in f.readline().split('\'')[1:-1] if i != ',']
+item_names = [i for i in f.readline().split('\'')[1:400] if i != ',']
 item_numbers = {item_names[i] : i for i in range(len(item_names))}
 transactions = {}
 
