@@ -61,7 +61,7 @@ items = [i for i in range(len(item_names)) if len(transaction_lists[i]) > eps]
 k = 2
 
 
-while len(L) > k:
+while len(L) >= k:
     # set of candidates rules
     C = []
     new_transaction_lists = []
