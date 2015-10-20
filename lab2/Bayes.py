@@ -12,10 +12,10 @@ hamsg_count = 0
 
 
 # TODO: we should go through all the files from the learning set
-for f in listdir('pu1/part1'):
-    cur = open(join('pu1/part1', f))
+for f in listdir('bayes/pu1/part1'):
+    cur = open(join('bayes/pu1/part1', f))
     is_spam = "spmsg" in f
-    words = {int(i) for i in cur.readline().split(' ')[1:]}
+    words = {int(i) for i in cur.readline().split()[1:]}
     for i in cur.readlines()[1].split(' '):
         words.add(int(i))
     for word in words:
@@ -31,6 +31,7 @@ for f in listdir('pu1/part1'):
                 words_in_ham[word] += 1
             else:
                 words_in_ham[word] = 1
+
 
 word_spaming = {word: words_in_spam[word] / spmsg_count for word in words_in_spam}
 word_haming = {word: words_in_ham[word] / hamsg_count for word in words_in_ham}

@@ -1,5 +1,7 @@
 __author__ = 'dantipov'
 
+from time import time
+
 
 def merge(x, y):
     res = []
@@ -96,6 +98,8 @@ while len(L) >= k:
         result.append((len(transaction_lists[i]), L[i]))
     k += 1
 
+
+result = [(len(r[1]), r) for r in result]
 result.sort()
 for r in result:
-    print(r[0], [item_names[i] for i in r[1]])
+    print(r[1][0], [item_names[i] for i in r[1][1]])
